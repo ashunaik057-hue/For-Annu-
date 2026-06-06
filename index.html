@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For Annu ❤️</title>
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial, sans-serif;
+}
+
+body{
+background:linear-gradient(135deg,#ff758c,#ff7eb3);
+min-height:100vh;
+overflow-x:hidden;
+color:#333;
+}
+
+.container{
+max-width:900px;
+margin:auto;
+padding:20px;
+}
+
+.card{
+background:white;
+padding:25px;
+margin:20px 0;
+border-radius:20px;
+box-shadow:0 10px 30px rgba(0,0,0,0.15);
+text-align:center;
+}
+
+.hero-img{
+width:100%;
+max-width:500px;
+border-radius:20px;
+margin-top:15px;
+box-shadow:0 10px 25px rgba(0,0,0,0.2);
+}
+
+h1{
+color:#ff4d6d;
+margin-bottom:10px;
+}
+
+h2{
+color:#ff4d6d;
+margin-bottom:15px;
+}
+
+button{
+background:#ff4d6d;
+color:white;
+border:none;
+padding:12px 22px;
+border-radius:30px;
+cursor:pointer;
+font-size:16px;
+margin-top:10px;
+}
+
+#timer{
+font-size:22px;
+font-weight:bold;
+margin-top:15px;
+}
+
+#reason{
+font-size:22px;
+min-height:80px;
+padding:15px;
+}
+
+.heart{
+position:fixed;
+font-size:20px;
+animation:float 8s linear infinite;
+z-index:0;
+}
+
+@keyframes float{
+from{
+transform:translateY(100vh);
+opacity:1;
+}
+to{
+transform:translateY(-100px);
+opacity:0;
+}
+}
+
+.card{
+position:relative;
+z-index:2;
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+
+<div class="card">
+<h1>For Annu ❤️</h1>
+<p>From Ashu</p>
+
+<img src="cover.jpg" class="hero-img" alt="Ashu and Annu">
+
+<p style="margin-top:20px;font-size:18px;">
+No matter how far apart we are, you are still my favorite person and the one I miss the most.
+</p>
+
+<div id="timer"></div>
+</div>
+
+<div class="card">
+<h2>A Letter For You 💌</h2>
+
+<p>
+My Dearest Annu,
+<br><br>
+Every day without you feels a little incomplete.
+<br><br>
+Sometimes I catch myself wanting to tell you something random, only to remember you're not right beside me.
+I miss your smile, your laugh, your voice, and all the little moments we share.
+<br><br>
+No matter how busy life gets, you remain my favorite person.
+You are a part of my happiest memories and my most beautiful thoughts.
+<br><br>
+This little website isn't just about saying "I miss you."
+It's about reminding you that you are loved, appreciated, and thought about more often than you know.
+<br><br>
+Forever Yours,
+<br><br>
+<b>Ashu ❤️</b>
+</p>
+</div>
+
+<div class="card">
+<h2>Time We've Been Together 💕</h2>
+<div id="countup"></div>
+</div>
+
+<div class="card">
+<h2>100 Reasons I Miss You ❤️</h2>
+
+<div id="reason">
+Click below to reveal a reason...
+</div>
+
+<button onclick="nextReason()">Show Reason 💕</button>
+</div>
+
+</div>
+
+<script>
+
+const startDate = new Date("August 26, 2021 00:00:00");
+
+function updateTimer(){
+const now = new Date();
+
+let diff = now - startDate;
+
+const days = Math.floor(diff/(1000*60*60*24));
+
+document.getElementById("countup").innerHTML =
+days + " Days Together ❤️";
+}
+
+setInterval(updateTimer,1000);
+updateTimer();
+
+const reasons = [
+"I miss your smile ❤️",
+"I miss your voice ❤️",
+"I miss your laugh ❤️",
+"I miss our conversations ❤️",
+"I miss your good morning texts ❤️",
+"I miss your good night texts ❤️",
+"I miss seeing your name on my phone ❤️",
+"I miss making you laugh ❤️",
+"I miss your cute reactions ❤️",
+"I miss talking to you for hours ❤️",
+"I miss our memories ❤️",
+"I miss your attention ❤️",
+"I miss your care ❤️",
+"I miss your kindness ❤️",
+"I miss your presence ❤️",
+"I miss your jokes ❤️",
+"I miss your eyes ❤️",
+"I miss your messages ❤️",
+"I miss every little thing about you ❤️",
+"I miss you simply because you're you ❤️"
+];
+
+while(reasons.length < 99){
+reasons.push(
+"Reason #" + (reasons.length+1) +
+": Life feels brighter when you're around ❤️"
+);
+}
+
+reasons.push(
+"Reason #100: No list can ever explain how much I miss you, Annu. I just do. Every single day. ❤️"
+);
+
+let current = 0;
+
+function nextReason(){
+document.getElementById("reason").innerHTML =
+reasons[current];
+current = (current + 1) % reasons.length;
+}
+
+function createHeart(){
+const heart=document.createElement("div");
+
+heart.classList.add("heart");
+heart.innerHTML="❤️";
+
+heart.style.left=Math.random()*100+"vw";
+heart.style.fontSize=(15+Math.random()*25)+"px";
+
+document.body.appendChild(heart);
+
+setTimeout(()=>{
+heart.remove();
+},8000);
+}
+
+setInterval(createHeart,300);
+
+</script>
+
+</body>
+</html>
